@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <title>JSF Validator Tags Örnek</title>
+</h:head>
+<h:body>
+   <h:form>
+      <h:panelGrid columns="3">
+         <h:outputText value="İsim Soyisim Giriniz:"/>
+         <h:inputText id="nameSurname" value="#{validatorTagsBean.nameAndSurname}"
+          validatorMessage="6 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!">
+            <f:validateLength minimum="6" maximum="25"/>
+         </h:inputText>
+         <h:message for="nameSurname" style="color: red"/>
+ 
+         <h:outputText value="Yaşınızı Giriniz:"/>
+         <h:inputText id="age" value="#{validatorTagsBean.age}" 
+         validatorMessage="18 Yaşından Küçük Ya Da 60 Yaşından Büyüksünüz'">
+            <f:validateLongRange minimum="18" maximum="60"/>
+         </h:inputText>
+         <h:message for="age" style="color: red"/>
+ 
+         <h:outputText value="Maaşınızı Giriniz:"/>
+         <h:inputText id="salary" value="#{validatorTagsBean.salary}" 
+         validatorMessage="Maaşınız 1000.50 İle 5000.50 Arasında Değil!">
+            <f:validateDoubleRange minimum="1000.50" maximum="5000.50"/>
+         </h:inputText>
+         <h:message for="salary" style="color: red"/>
+ 
+         <h:outputText value="E-Posta Adresinizi Giriniz:"/>
+         <h:inputText id="email" value="#{validatorTagsBean.email}"
+          validatorMessage="Geçersiz E-Posta Adresi!">
+        <f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)(\.[A-Za-z]{2,})$" />
+         </h:inputText>
+         <h:message for="email" style="color: red"/>
+      </h:panelGrid>
+      <h:commandButton value="Verileri Gönder" action="datas.xhtml?faces-redirect=true"/>
+   </h:form>
+</h:body>
+</html>

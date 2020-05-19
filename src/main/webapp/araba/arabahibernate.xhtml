@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="tema" name="css/default.css" />
+	<h:outputStylesheet library="tema" name="css/cssLayout.css" />
+
+</h:head>
+<h:body>
+
+	<h:form>
+
+		<h:dataTable width="94%" value="#{arabaHibernateBean.arabaListesi}"
+			rendered="#{arabaHibernateBean.arabaListesi ne null}" var="araba"
+			styleClass="bloglar" headerClass="tableHead">
+			<f:facet name="header">
+    Araba Listesi
+    </f:facet>
+			<h:column headerClass="colHead">
+				<f:facet name="header">
+           Araba Markası
+    </f:facet>
+				<h:outputText value="#{araba.marka}" />
+			</h:column>
+			<h:column headerClass="colHead">
+				<f:facet name="header">
+           Araba Modeli
+    </f:facet>
+				<h:outputText value="#{araba.model}" />
+			</h:column>
+			<h:column headerClass="colHead">
+				<f:facet name="header">
+           Kapi Sayisi
+    </f:facet>
+				<h:outputText value="#{araba.kapi}" />
+			</h:column>
+			<h:column headerClass="colHead">
+				<f:facet name="header">
+           Pencere Sayisi
+    </f:facet>
+				<h:outputText value="#{araba.pencere}" />
+			</h:column>
+
+			<h:column headerClass="colHead">
+				<f:facet name="header">
+        İşlemler
+     </f:facet>
+				<h:commandLink value="Araba Detaya Git"
+					action="#{arabaHibernateBean.arabayaGit(araba)}" />
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+</h:body>
+</html>
